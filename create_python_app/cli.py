@@ -1,11 +1,15 @@
 import click
 from cookiecutter.main import cookiecutter
 
-from create_python_app.settings import DEFAULT_TEMPLATE_NAME, TEMPLATES
+from create_python_app.settings import DEFAULT_TEMPLATE_NAME
+from create_python_app.templates import get_all_templates
 
 
 class Argument:
     TEMPLATE_NAME = "template_name"
+
+
+TEMPLATES = get_all_templates()
 
 
 @click.command()
