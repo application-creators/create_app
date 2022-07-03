@@ -15,6 +15,10 @@ class Argument:
 def main(template_name):
     click.echo(f"Using '{template_name}' template. ")
 
-    template_repo = TEMPLATES[template_name]
+    template_repository = TEMPLATES[template_name]
 
-    cookiecutter(template_repo)
+    click.echo(f"Template repository: {template_repository}")
+
+    click.echo("Creating app...")
+    cookiecutter(template_repository)
+    click.echo("Finished up creating the app! ✨ 👏 ✨")
