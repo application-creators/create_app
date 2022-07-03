@@ -10,7 +10,9 @@ class Argument:
 
 @click.command()
 @click.argument(
-    Argument.TEMPLATE_NAME, default=DEFAULT_TEMPLATE_NAME, type=click.Choice(TEMPLATES)
+    Argument.TEMPLATE_NAME,
+    default=DEFAULT_TEMPLATE_NAME,
+    type=click.Choice(TEMPLATES),
 )
 def main(template_name):
     click.echo(f"Using '{template_name}' template. ")
