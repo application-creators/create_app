@@ -9,6 +9,7 @@ VIRTUALENV_ACTIVATE=${VIRTUALENV_PATH}/bin/activate
 
 REQUIREMENTS_FILE_PATH=./requirements.frozen
 TEST_REQUIREMENTS_FILE_PATH=./requirements.test.frozen
+BUILD_REQUIREMENTS_FILE_PATH=./requirements.build.frozen
 
 SETUP_FILENAME=setup.py
 
@@ -42,6 +43,12 @@ install_reqs_in_venv:
 install_test_reqs_in_venv:
 	@echo "Installing test requirements..."
 	${VIRTUALENV_PIP_BIN} install -r "${TEST_REQUIREMENTS_FILE_PATH}"
+	@echo "Done!"
+
+
+install_build_reqs_in_venv:
+	@echo "Installing build requirements..."
+	${VIRTUALENV_PIP_BIN} install -r "${BUILD_REQUIREMENTS_FILE_PATH}"
 	@echo "Done!"
 
 

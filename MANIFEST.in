@@ -1,0 +1,2 @@
+include requirements.frozen
+include requirements.test.frozen
