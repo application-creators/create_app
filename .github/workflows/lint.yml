@@ -1,6 +1,15 @@
 name: Lint
 
-on: [push, pull_request]
+on:
+  push:
+    paths-ignore:
+      - "LICENSE"
+      - "*.md"
+
+  pull_request:
+    paths-ignore:
+      - "LICENSE"
+      - "*.md"
 
 jobs:
   lint:
