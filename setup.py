@@ -7,6 +7,15 @@ from create_app.settings import (
     REQUIREMENTS_FILE,
 )
 
+VERSION = "0.1"
+
+
+DESCRIPTION = (
+    "A tool for creating applications from templates. Use your time wisely, "
+    "while adopting state-of-the-art technologies and practices!"
+)
+
+
 ENTRY_POINTS = {
     "console_scripts": [f"{PACKAGE_NAME}={PACKAGE_NAME}.cli:main"],
 }
@@ -20,8 +29,8 @@ def get_requirements():
 setup(
     name=PYPI_PACKAGE_NAME,
     entry_points=ENTRY_POINTS,
-    version="0.1.2",
-    description="CLI to create new Python applications",
+    version=VERSION,
+    description=DESCRIPTION,
     url=GIT_REPOSITORY,
     author="Gabriel Bazan",
     author_email="gbazan@outlook.com",
