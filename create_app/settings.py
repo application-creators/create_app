@@ -17,7 +17,7 @@ TEMPLATES_FILE_BRANCH = "develop"  # TODO: Change to "main"
 TEMPLATES_FILE_URI = (
     f"https://raw.githubusercontent.com/{GITHUB_USERNAME}"
     f"/{GITHUB_PROJECT_NAME}/{TEMPLATES_FILE_BRANCH}"
-    f"/{PACKAGE_NAME}/{TEMPLATES_FILENAME}"
+    f"/{TEMPLATES_FILENAME}"
 )
 
 
