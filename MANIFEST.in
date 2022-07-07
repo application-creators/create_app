@@ -1,2 +1,3 @@
 include requirements.frozen
 include requirements.test.frozen
+include create_app/templates.json
