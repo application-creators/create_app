@@ -1,6 +1,11 @@
 from setuptools import setup
 
-from create_app.settings import PACKAGE_NAME, PYPI_PACKAGE_NAME, REQUIREMENTS_FILE
+from create_app.settings import (
+    GIT_REPOSITORY,
+    PACKAGE_NAME,
+    PYPI_PACKAGE_NAME,
+    REQUIREMENTS_FILE,
+)
 
 ENTRY_POINTS = {
     "console_scripts": [f"{PACKAGE_NAME}={PACKAGE_NAME}.cli:main"],
@@ -15,9 +20,9 @@ def get_requirements():
 setup(
     name=PYPI_PACKAGE_NAME,
     entry_points=ENTRY_POINTS,
-    version="0.1.1",
+    version="0.1.2",
     description="CLI to create new Python applications",
-    url="https://github.com/gabrielbazan/create_app",
+    url=GIT_REPOSITORY,
     author="Gabriel Bazan",
     author_email="gbazan@outlook.com",
     license="MIT",
