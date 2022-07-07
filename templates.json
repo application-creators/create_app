@@ -1,0 +1,6 @@
+{
+    "python_simple": "https://github.com/application-creators/python_simple",
+    "python_compose": "https://github.com/application-creators/python_compose",
+    "python_fastapi": "https://github.com/application-creators/python_fastapi",
+    "python_fastapi_with_database": "https://github.com/application-creators/python_fastapi_with_database"
+}

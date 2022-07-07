@@ -1,0 +1,66 @@
+
+
+SYSTEM_PYTHON_BIN=python3
+
+VIRTUALENV_PATH=./venv
+VIRTUALENV_PYTHON_BIN=${VIRTUALENV_PATH}/bin/python3
+VIRTUALENV_PIP_BIN=${VIRTUALENV_PATH}/bin/pip
+VIRTUALENV_ACTIVATE=${VIRTUALENV_PATH}/bin/activate
+
+REQUIREMENTS_FILE_PATH=./requirements.frozen
+TEST_REQUIREMENTS_FILE_PATH=./requirements.test.frozen
+BUILD_REQUIREMENTS_FILE_PATH=./requirements.build.frozen
+
+SETUP_FILENAME=setup.py
+
+
+cleanup:
+	@echo "Cleaning up..."
+	rm -fr *.egg-info
+	rm -fr build
+	rm -fr dist
+	@echo "Done!"
+
+
+create_venv:
+	@echo "Creating virtualenv..."
+	${SYSTEM_PYTHON_BIN} -m venv "${VIRTUALENV_PATH}"
+	@echo "Done!"
+
+
+delete_venv:
+	@echo "Deleting virtualenv..."
+	rm -fr ${VIRTUALENV_PATH}
+	@echo "Done!"
+
+
+install_reqs_in_venv:
+	@echo "Installing requirements..."
+	${VIRTUALENV_PIP_BIN} install -r "${REQUIREMENTS_FILE_PATH}"
+	@echo "Done!"
+
+
+install_test_reqs_in_venv:
+	@echo "Installing test requirements..."
+	${VIRTUALENV_PIP_BIN} install -r "${TEST_REQUIREMENTS_FILE_PATH}"
+	@echo "Done!"
+
+
+install_build_reqs_in_venv:
+	@echo "Installing build requirements..."
+	${VIRTUALENV_PIP_BIN} install -r "${BUILD_REQUIREMENTS_FILE_PATH}"
+	@echo "Done!"
+
+
+run_unit_tests:
+	@echo "Running unit tests..."
+	. ${VIRTUALENV_ACTIVATE} && ./scripts/run_unit_tests.sh && deactivate
+	@echo "Done!"
+
+
+install_in_venv:
+	${VIRTUALENV_PIP_BIN} install -e .
+
+
+build:
+	${VIRTUALENV_PYTHON_BIN} -m build
