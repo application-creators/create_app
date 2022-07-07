@@ -1,7 +1,7 @@
 {
-    "simple": "https://github.com/gabrielbazan/create_app__python_simple",
-    "compose": "https://github.com/gabrielbazan/create_app__python_compose",
-    "fastapi": "https://github.com/gabrielbazan/create_app__python_fastapi",
-    "fastapi_with_database": "https://github.com/gabrielbazan/create_app__python_fastapi_with_database",
+    "simple": "https://github.com/application-creators/python_simple",
+    "compose": "https://github.com/application-creators/python_compose",
+    "fastapi": "https://github.com/application-creators/python_fastapi",
+    "fastapi_with_database": "https://github.com/application-creators/python_fastapi_with_database",
     "fast-cookie": "https://github.com/gabrielbazan/fast-cookie.git"
 }

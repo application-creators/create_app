@@ -1,4 +1,4 @@
-GITHUB_USERNAME = "gabrielbazan"
+GITHUB_USERNAME = "application-creators"
 GITHUB_PROJECT_NAME = "create_app"
 
 GIT_REPOSITORY = f"https://github.com/{GITHUB_USERNAME}/{GITHUB_PROJECT_NAME}"
