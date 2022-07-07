@@ -1,10 +1,6 @@
 from setuptools import setup
 
-from create_app.settings import (
-    PACKAGE_NAME,
-    PYPI_PACKAGE_NAME,
-    REQUIREMENTS_FILE,
-)
+from create_app.settings import PACKAGE_NAME, PYPI_PACKAGE_NAME, REQUIREMENTS_FILE
 
 ENTRY_POINTS = {
     "console_scripts": [f"{PACKAGE_NAME}={PACKAGE_NAME}.cli:main"],
