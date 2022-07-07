@@ -32,6 +32,6 @@ jobs:
 
       - name: Upload to PyPI via Twine
         env:
-          TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+          TWINE_PASSWORD: ${{ secrets.TEST_PYPI_TOKEN }}
         run: |
           twine upload --repository testpypi --verbose -u '__token__' dist/*
