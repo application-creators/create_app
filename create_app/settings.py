@@ -1,11 +1,13 @@
-PACKAGE_NAME = "create_app"
-PYPI_PACKAGE_NAME = "create_app"
-
 GITHUB_USERNAME = "gabrielbazan"
 GITHUB_PROJECT_NAME = "create_app"
 
 GIT_REPOSITORY = f"https://github.com/{GITHUB_USERNAME}/{GITHUB_PROJECT_NAME}"
 
+
+PYPI_PACKAGE_NAME = "create_app"
+
+
+PACKAGE_NAME = "create_app"
 
 REQUIREMENTS_FILE = "requirements.frozen"
 
@@ -19,6 +21,5 @@ TEMPLATES_FILE_URI = (
     f"/{GITHUB_PROJECT_NAME}/{TEMPLATES_FILE_BRANCH}"
     f"/{TEMPLATES_FILENAME}"
 )
-
 
 DEFAULT_TEMPLATE_NAME = "base"
