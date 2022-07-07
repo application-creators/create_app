@@ -1,5 +1,5 @@
 {
     "base": "https://github.com/gabrielbazan/template__python_base",
     "fastapi": "https://github.com/gabrielbazan/template__python_fastapi",
-    "fast-cookie": "git@github.com:gabrielbazan/fast-cookie.git"
+    "fast-cookie": "https://github.com/gabrielbazan/fast-cookie.git"
 }

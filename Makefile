@@ -63,4 +63,4 @@ install_in_venv:
 
 
 build:
-	${VIRTUALENV_PYTHON_BIN} ${SETUP_FILENAME} sdist
+	${VIRTUALENV_PYTHON_BIN} -m build
