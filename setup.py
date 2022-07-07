@@ -15,7 +15,7 @@ def get_requirements():
 setup(
     name=PYPI_PACKAGE_NAME,
     entry_points=ENTRY_POINTS,
-    version="0.1",
+    version="0.1.1",
     description="CLI to create new Python applications",
     url="https://github.com/gabrielbazan/create_app",
     author="Gabriel Bazan",
