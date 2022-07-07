@@ -7,7 +7,7 @@ from create_app.settings import (
     REQUIREMENTS_FILE,
 )
 
-VERSION = "0.1"
+VERSION = "0.1.1"
 
 
 DESCRIPTION = (
