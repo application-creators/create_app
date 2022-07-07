@@ -36,12 +36,12 @@ If you don't provide the _template_name_ argument, it defaults to "python_simple
 
 There's an [official index of templates](/templates.json), from which you can get your project started:
 
-| **Template name**              | **Description**                                                                                                                                | **Repo**                                                              |
-|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------|
-| python_simple                  | Simple Python project with Docker                                                                                                              | https://github.com/application-creators/python_simple                 |
-| python_compose                 | Simple Python project with Docker Compose                                                                                                      | https://github.com/application-creators/python_compose                |
-| python_fastapi                 | FastAPI project with Docker                                                                                                                    | https://github.com/application-creators/python_fastapi                |
-| python_fastapi_with_database   | FastAPI project with Docker Compose and PostgreSQL (which can be very easily changed for any other engine), SQLAlchemy, and Alembic migrations | https://github.com/application-creators/python_fastapi_with_database  |
+| **Template name**              | **Description**                                                                                                                                | **Repo**                                                                             |
+|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
+| python_simple                  | Simple Python project with Docker                                                                                                              | [Link to repo](https://github.com/application-creators/python_simple)                |
+| python_compose                 | Simple Python project with Docker Compose                                                                                                      | [Link to repo](https://github.com/application-creators/python_compose)               |
+| python_fastapi                 | FastAPI project with Docker                                                                                                                    | [Link to repo](https://github.com/application-creators/python_fastapi)               |
+| python_fastapi_with_database   | FastAPI project with Docker Compose and PostgreSQL (which can be very easily changed for any other engine), SQLAlchemy, and Alembic migrations | [Link to repo](https://github.com/application-creators/python_fastapi_with_database) |
 
 At the moment there are only Python templates available in the official index. But _create_app_ can 
 generate applications of literally **any language**.
