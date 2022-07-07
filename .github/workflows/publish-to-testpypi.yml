@@ -2,13 +2,15 @@ name: Publish to Test-PyPi
 
 on:
   release:
-    types: [prereleased]
+    types: [published]
 
 permissions:
   contents: read
 
 jobs:
   publish:
+    if: "github.event.release.prerelease"
+
     runs-on: ubuntu-latest
 
     steps:

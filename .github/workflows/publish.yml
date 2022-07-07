@@ -9,6 +9,8 @@ permissions:
 
 jobs:
   publish:
+    if: "!github.event.release.prerelease"
+
     runs-on: ubuntu-latest
 
     steps:
