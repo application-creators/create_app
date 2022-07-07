@@ -1,31 +1,31 @@
 from unittest import TestCase
 from unittest.mock import MagicMock, patch
 
-from create_app.cli import build_main, handler
 from create_app.tests.utils import get_module
 
 MODULE = get_module(__file__)
 
 
 class TemplatesTestCase(TestCase):
-    @patch(f"{MODULE}.click")
-    @patch(f"{MODULE}.get_templates")
-    def test_build_main(
-        self,
-        get_templates_mock: MagicMock,
-        click_mock: MagicMock,
-    ) -> None:
-        templates_mock = MagicMock()
-        get_templates_mock.return_value = templates_mock
+    def setUp(self) -> None:
+        self.click_command_mock = patch("click.command").start()
+        self.click_argument_mock = patch("click.argument").start()
+        self.click_choice_mock = patch("click.Choice").start()
 
-        build_main()
+        self.cookiecutter_mock = patch("cookiecutter.main.cookiecutter").start()
 
-        get_templates_mock.assert_called_once()
-        click_mock.Choice.assert_called_once_with(templates_mock)
+        self.get_templates_mock = patch("create_app.templates.get_templates").start()
 
-    @patch(f"{MODULE}.click", MagicMock())
-    @patch(f"{MODULE}.cookiecutter")
-    def test_handler(self, cookiecutter_mock: MagicMock) -> None:
+    def tearDown(self) -> None:
+        self.click_command_mock.stop()
+        self.click_argument_mock.stop()
+        self.click_choice_mock.stop()
+
+        self.cookiecutter_mock.stop()
+
+        self.get_templates_mock.stop()
+
+    def test_main(self) -> None:
         template_name_mock = MagicMock()
         template_repository_mock = MagicMock()
 
@@ -33,6 +33,16 @@ class TemplatesTestCase(TestCase):
             template_name_mock: template_repository_mock,
         }
 
-        handler(templates_mock, template_name_mock)
+        self.get_templates_mock.return_value = templates_mock
 
-        cookiecutter_mock.assert_called_once_with(template_repository_mock)
+        from create_app.cli import handler
+
+        self.get_templates_mock.assert_called_once()
+
+        self.click_choice_mock.assert_called_once_with(templates_mock)
+        self.click_argument_mock.assert_called_once()
+        self.click_command_mock.assert_called_once()
+
+        handler(template_name_mock)
+
+        self.cookiecutter_mock.assert_called_once_with(template_repository_mock)

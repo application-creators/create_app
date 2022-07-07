@@ -9,7 +9,20 @@ class Argument:
     TEMPLATE_NAME = "template_name"
 
 
-def handler(templates, template_name):
+templates = get_templates()
+
+
+@click.command()
+@click.argument(
+    Argument.TEMPLATE_NAME,
+    default=DEFAULT_TEMPLATE_NAME,
+    type=click.Choice(templates),
+)
+def main(template_name):
+    return handler(template_name)
+
+
+def handler(template_name):
     click.echo(f"Basing your app on the '{template_name}' template. ")
 
     template_repository = templates[template_name]
@@ -19,21 +32,3 @@ def handler(templates, template_name):
     click.echo("\n\nCreating app...")
     cookiecutter(template_repository)
     click.echo("\nYou've created your new app! ✨ 👏 ✨")
-
-
-def build_main():
-    templates = get_templates()
-
-    @click.command()
-    @click.argument(
-        Argument.TEMPLATE_NAME,
-        default=DEFAULT_TEMPLATE_NAME,
-        type=click.Choice(templates),
-    )
-    def _main(template_name):
-        handler(templates, template_name)
-
-    return _main
-
-
-main = build_main()
