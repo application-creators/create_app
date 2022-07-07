@@ -31,4 +31,4 @@ def handler(template_name):
 
     click.echo("\n\nCreating app...")
     cookiecutter(template_repository)
-    click.echo("\nYou've created your new app! ✨ 👏 ✨")
+    click.echo("\nYour app is ready! ✨ 👏 ✨")
