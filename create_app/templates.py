@@ -9,7 +9,7 @@ class AvailableTemplatesFetchError(Exception):
     pass
 
 
-def get_all_templates() -> Dict[str, str]:
+def get_templates() -> Dict[str, str]:
     response = get(TEMPLATES_FILE_URI)
 
     if not response.ok:
