@@ -1,3 +1,5 @@
+from typing import Dict
+
 import click
 from cookiecutter.main import cookiecutter
 
@@ -9,7 +11,7 @@ class Argument:
     TEMPLATE_NAME = "template_name"
 
 
-templates = get_templates()
+templates: Dict[str, str] = get_templates()
 
 
 @click.command()
@@ -18,14 +20,14 @@ templates = get_templates()
     default=DEFAULT_TEMPLATE_NAME,
     type=click.Choice(templates),
 )
-def main(template_name):
+def main(template_name: str) -> None:
     return handler(template_name)
 
 
-def handler(template_name):
+def handler(template_name: str) -> None:
     click.echo(f"Basing your app on the '{template_name}' template. ")
 
-    template_repository = templates[template_name]
+    template_repository: str = templates[template_name]
 
     click.echo(f"\n\nCheck the template out! {template_repository}")
 
