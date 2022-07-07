@@ -1,5 +1,5 @@
 PYPI_PACKAGE_NAME = "create_py_app"
-PACKAGE_NAME = "create_python_app"
+PACKAGE_NAME = "create_app"
 REQUIREMENTS_FILE = "requirements.frozen"
 
 

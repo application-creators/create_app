@@ -2,13 +2,13 @@ from os.path import join
 from unittest import TestCase
 from unittest.mock import MagicMock, patch
 
-from create_python_app.settings import PACKAGE_NAME, TEMPLATES_FILE
-from create_python_app.templates import (
+from create_app.settings import PACKAGE_NAME, TEMPLATES_FILE
+from create_app.templates import (
     FILE_OPEN_MODE,
     get_all_templates,
     get_templates_file_path,
 )
-from create_python_app.tests.utils import get_module
+from create_app.tests.utils import get_module
 
 MODULE = get_module(__file__)
 

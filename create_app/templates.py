@@ -2,7 +2,7 @@ import json
 from os.path import abspath, dirname, join
 from typing import Dict
 
-from create_python_app.settings import TEMPLATES_FILE
+from create_app.settings import TEMPLATES_FILE
 
 FILE_OPEN_MODE = "r"
 

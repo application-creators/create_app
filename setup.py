@@ -1,6 +1,6 @@
 from setuptools import setup
 
-from create_python_app.settings import (
+from create_app.settings import (
     PACKAGE_NAME,
     PYPI_PACKAGE_NAME,
     REQUIREMENTS_FILE,
@@ -21,7 +21,7 @@ setup(
     entry_points=ENTRY_POINTS,
     version="0.1",
     description="CLI to create new Python applications",
-    url="https://github.com/gabrielbazan/create_python_app",
+    url="https://github.com/gabrielbazan/create_app",
     author="Gabriel Bazan",
     author_email="gbazan@outlook.com",
     license="MIT",
