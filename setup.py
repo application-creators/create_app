@@ -12,15 +12,15 @@ from create_app.settings import (
 ROOT_PATH = Path(__file__).parent
 
 
-VERSION = "0.1.2"
+VERSION = "0.1.3"
 
 
 README_FILENAME = "README.md"
 
 
 DESCRIPTION = (
-    "A tool for creating applications from templates. Use your time wisely, "
-    "while adopting state-of-the-art technologies and practices!"
+    "A tool that allows to quickly get your basic project structure ready, "
+    "while adopting the best technologies, tools, and practices."
 )
 
 
@@ -35,7 +35,7 @@ def get_requirements():
 
 
 def get_long_description():
-    (ROOT_PATH / README_FILENAME).read_text(encoding="utf8")
+    return (ROOT_PATH / README_FILENAME).read_text(encoding="utf8")
 
 
 setup(
