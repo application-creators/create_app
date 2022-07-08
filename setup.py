@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from setuptools import setup
 
 from create_app.settings import (
@@ -7,7 +9,13 @@ from create_app.settings import (
     REQUIREMENTS_FILE,
 )
 
-VERSION = "0.1.1"
+ROOT_PATH = Path(__file__).parent
+
+
+VERSION = "0.1.2"
+
+
+README_FILENAME = "README.md"
 
 
 DESCRIPTION = (
@@ -26,11 +34,31 @@ def get_requirements():
         return file.readlines()
 
 
+def get_long_description():
+    (ROOT_PATH / README_FILENAME).read_text(encoding="utf8")
+
+
 setup(
     name=PYPI_PACKAGE_NAME,
     entry_points=ENTRY_POINTS,
     version=VERSION,
     description=DESCRIPTION,
+    long_description=get_long_description(),
+    long_description_content_type="text/markdown",
+    # keywords="", TODO
+    classifiers=[
+        "Environment :: Console",
+        "Intended Audience :: Developers",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3 :: Only",
+        # "Development Status :: 5 - Production/Stable", TODO
+        # "Operating System :: OS Independent", TODO
+    ],
     url=GIT_REPOSITORY,
     author="Gabriel Bazan",
     author_email="gbazan@outlook.com",
