@@ -50,7 +50,7 @@ jobs:
           debug: true
 
   coveralls-finish:
-    needs: build
+    needs: test
 
     runs-on: ubuntu-latest
 
