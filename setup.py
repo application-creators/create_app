@@ -12,9 +12,6 @@ from create_app.settings import (
 ROOT_PATH = Path(__file__).parent
 
 
-VERSION = "0.1.4"
-
-
 README_FILENAME = "README.md"
 
 
@@ -41,7 +38,6 @@ def get_long_description():
 setup(
     name=PYPI_PACKAGE_NAME,
     entry_points=ENTRY_POINTS,
-    version=VERSION,
     description=DESCRIPTION,
     long_description=get_long_description(),
     long_description_content_type="text/markdown",
