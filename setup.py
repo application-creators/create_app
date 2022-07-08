@@ -19,8 +19,8 @@ README_FILENAME = "README.md"
 
 
 DESCRIPTION = (
-    "A tool for creating applications from templates. Use your time wisely, "
-    "while adopting state-of-the-art technologies and practices!"
+    "A tool that allows to quickly get your basic project structure ready, "
+    "while adopting the best technologies, tools, and practices."
 )
 
 
