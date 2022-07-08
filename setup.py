@@ -12,7 +12,7 @@ from create_app.settings import (
 ROOT_PATH = Path(__file__).parent
 
 
-VERSION = "0.1.3"
+VERSION = "0.1.4"
 
 
 README_FILENAME = "README.md"
