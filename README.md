@@ -2,8 +2,6 @@
   <img alt="Create App logo" src="https://raw.githubusercontent.com/application-creators/create_app/develop/docs/static/logo-cropped.png">
 </p>
 
-<h2 align="center">Create App</h2>
-
 <p align="center">
     <a href="https://github.com/application-creators/create_app/actions"><img alt="Test Workflow Status" src="https://github.com/application-creators/create_app/workflows/Test/badge.svg"></a>
     <a href="https://github.com/application-creators/create_app/actions"><img alt="Linting Workflow Status" src="https://github.com/application-creators/create_app/workflows/Lint/badge.svg"></a>
