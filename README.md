@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Create App logo" src="https://raw.githubusercontent.com/application-creators/create_app/develop/docs/static/logo-cropped.png">
+  <img alt="Create App logo" src="https://raw.githubusercontent.com/application-creators/create_app/main/docs/static/logo-cropped.png">
 </p>
 
 <p align="center">
