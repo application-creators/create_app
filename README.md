@@ -1,4 +1,6 @@
-<h2 align="center">Create App</h2>
+<p align="center">
+  <img alt="Create App logo" src="https://raw.githubusercontent.com/application-creators/create_app/main/docs/static/logo-cropped.png">
+</p>
 
 <p align="center">
     <a href="https://github.com/application-creators/create_app/actions"><img alt="Test Workflow Status" src="https://github.com/application-creators/create_app/workflows/Test/badge.svg"></a>
@@ -14,7 +16,7 @@
 _create_app_ is a tool for creating applications from templates.
 
 When developers start a new project, they perform some repetitive tasks to build the basic project structure before 
-actually start writing features. This basic structure involves things like: Well, the project structure, unit testing, 
+actually start coding features. This basic structure involves things like: Well, the project structure, unit testing, 
 code coverage, containerization, code linting and formatting, GIT hooks, building code documentation, among many others. 
 
 _create_app_ is a tool that allows to quickly get your basic project structure ready. It provides a set of templates
