@@ -1,3 +1,5 @@
+![Create app logo](https://raw.githubusercontent.com/application-creators/create_app/main/docs/static/logo.png)
+
 <h2 align="center">Create App</h2>
 
 <p align="center">
