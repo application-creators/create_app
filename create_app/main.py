@@ -39,3 +39,12 @@ def _try_to_get_templates(index: str) -> Dict[str, str]:
         return templates
     except Exception:
         raise click.ClickException(f"Failed to fetch templates from index! ({index})")
+
+
+def list_templates(index: str) -> None:
+    templates: Dict[str, str] = _try_to_get_templates(index)
+
+    click.echo("\nTemplates in index:")
+
+    for template_name, template_repository in templates.items():
+        click.echo(f"  * {template_name} ({template_repository})")
