@@ -37,12 +37,12 @@ python -m pip install create_app
 
 Run this command to generate your project:
 ```shell
-create_app [template_name]
+create_app TEMPLATE_NAME
 ```
 
 Or:
 ```shell
-python -m create_app [template_name]
+python -m create_app TEMPLATE_NAME
 ```
 
 
@@ -50,7 +50,7 @@ python -m create_app [template_name]
 
 If you or your organization require to keep a separate templates index, just pass the index URL:
 ```shell
-create_app [template_name] --index="https://www.somewhere.com/templates-index"
+create_app TEMPLATE_NAME --index="https://www.somewhere.com/templates-index"
 ```
 
 
