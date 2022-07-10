@@ -35,22 +35,43 @@ python -m pip install create_app
 
 ## Usage
 
-Run this command to generate your project:
+Learn how to use the _create_app_ command:
 ```shell
-create_app [template_name]
+python -m create_app --help
 ```
 
-Or:
+You can use the _--help_ option for all subcommands too.
+
+
+### List templates
+
+Use the _list_ subcommand to know which templates you can use:
+
 ```shell
-python -m create_app [template_name]
+python -m create_app list
 ```
 
 
-### Custom templates index
+### Create your project from a template
 
-If you or your organization require to keep a separate templates index, just pass the index URL:
+Use the _create_ subcommand and specify the _TEMPLATE_NAME_ you wish to use:
 ```shell
-create_app [template_name] --index="https://www.somewhere.com/templates-index"
+create_app create TEMPLATE_NAME
+```
+
+
+### Use a custom templates index
+
+You or your organization may need to keep a separate index with your own templates. 
+
+If that's the case, you can list the templates in the custom index by running:
+```shell
+create_app list --index="https://www.somewhere.com/templates-index"
+```
+
+And create your project from a template in that index:
+```shell
+create_app create TEMPLATE_NAME --index="https://www.somewhere.com/templates-index"
 ```
 
 
