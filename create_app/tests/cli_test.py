@@ -32,17 +32,17 @@ class CliTestCase(TestCase):
     @patch(f"{MODULE}.create_app")
     def test_main(self, create_app_mock: MagicMock):
         template_name_mock = MagicMock()
+        index_mock = MagicMock()
         use_defaults_mock = MagicMock()
 
         from create_app.cli import main
 
         self.click_command_mock.assert_called_once()
-        self.click_option_mock.assert_called_once()
-        self.click_argument_mock.assert_called_once()
 
-        main(template_name_mock, use_defaults_mock)
+        main(template_name_mock, index_mock, use_defaults_mock)
 
         create_app_mock.assert_called_once_with(
             template_name_mock,
+            index_mock,
             use_defaults_mock,
         )

@@ -45,7 +45,13 @@ Or:
 python -m create_app [template_name]
 ```
 
-If you don't provide the _template_name_ argument, it defaults to "python_simple".
+
+### Custom templates index
+
+If you or your organization require to keep a separate templates index, just pass the index URL:
+```shell
+create_app [template_name] --index="https://www.somewhere.com/templates-index"
+```
 
 
 ## Index of Available Templates
