@@ -14,12 +14,10 @@ REQUIREMENTS_FILE = "requirements.frozen"
 
 TEMPLATES_FILENAME = "templates.json"
 
-TEMPLATES_FILE_BRANCH = "develop"  # TODO: Change to "main"
+TEMPLATES_FILE_BRANCH = "main"
 
 TEMPLATES_FILE_URI = (
     f"https://raw.githubusercontent.com/{GITHUB_USERNAME}"
     f"/{GITHUB_PROJECT_NAME}/{TEMPLATES_FILE_BRANCH}"
     f"/{TEMPLATES_FILENAME}"
 )
-
-DEFAULT_TEMPLATE_NAME = "python_simple"
