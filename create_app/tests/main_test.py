@@ -82,9 +82,18 @@ class MainTestCase(TestCase):
 
         cookiecutter_mock.assert_not_called()
 
+    @patch(f"{MODULE}.click.echo", MagicMock())
     @patch(f"{MODULE}.get_templates")
     def test_list_templates(self, get_templates_mock: MagicMock) -> None:
         index_mock = MagicMock()
+
+        template_name_mock = MagicMock()
+        template_repo_mock = MagicMock()
+        templates_mock = {
+            template_name_mock: template_repo_mock,
+        }
+
+        get_templates_mock.return_value = templates_mock
 
         list_templates(index_mock)
 
