@@ -14,6 +14,14 @@ BUILD_REQUIREMENTS_FILE_PATH=./requirements.build.frozen
 SETUP_FILENAME=setup.py
 
 
+install_git_hooks:
+	pre-commit install
+
+
+run_git_hooks:
+	pre-commit run --all-files
+
+
 cleanup:
 	@echo "Cleaning up..."
 	rm -fr *.egg-info
@@ -22,34 +30,37 @@ cleanup:
 	@echo "Done!"
 
 
-create_venv:
+create_virtualenv:
 	@echo "Creating virtualenv..."
 	${SYSTEM_PYTHON_BIN} -m venv "${VIRTUALENV_PATH}"
 	@echo "Done!"
 
 
-delete_venv:
+delete_virtualenv:
 	@echo "Deleting virtualenv..."
 	rm -fr ${VIRTUALENV_PATH}
 	@echo "Done!"
 
 
-install_reqs_in_venv:
+install_requirements:
 	@echo "Installing requirements..."
 	${VIRTUALENV_PIP_BIN} install -r "${REQUIREMENTS_FILE_PATH}"
 	@echo "Done!"
 
 
-install_test_reqs_in_venv:
+install_test_requirements:
 	@echo "Installing test requirements..."
 	${VIRTUALENV_PIP_BIN} install -r "${TEST_REQUIREMENTS_FILE_PATH}"
 	@echo "Done!"
 
 
-install_build_reqs_in_venv:
+install_build_requirements:
 	@echo "Installing build requirements..."
 	${VIRTUALENV_PIP_BIN} install -r "${BUILD_REQUIREMENTS_FILE_PATH}"
 	@echo "Done!"
+
+
+install_all_requirements: install_requirements install_test_requirements install_build_requirements
 
 
 run_unit_tests:
@@ -58,7 +69,7 @@ run_unit_tests:
 	@echo "Done!"
 
 
-install_in_venv:
+install_in_virtualenv:
 	${VIRTUALENV_PIP_BIN} install -e .
 
 
