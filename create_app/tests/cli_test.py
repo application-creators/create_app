@@ -1,6 +1,8 @@
+import importlib
 from unittest import TestCase
 from unittest.mock import MagicMock, patch
 
+from create_app import cli
 from create_app.tests.utils import get_module
 
 MODULE = get_module(__file__)
@@ -29,6 +31,8 @@ class CliTestCase(TestCase):
             "click.argument",
             return_value=return_decorated_function,
         ).start()
+
+        importlib.reload(cli)
 
     def tearDown(self) -> None:
         self.click_group_mock.stop()
