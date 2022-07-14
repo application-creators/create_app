@@ -33,9 +33,9 @@ class MainTestCase(TestCase):
 
         create_app(
             template_name_mock,
-            index_url_mock,
-            use_defaults_mock,
-            config_file_mock,
+            index=index_url_mock,
+            use_defaults=use_defaults_mock,
+            config_file=config_file_mock,
         )
 
         templates_index_class_mock.assert_called_once_with(index_url_mock)
@@ -69,9 +69,9 @@ class MainTestCase(TestCase):
         with self.assertRaises(ClickException):
             create_app(
                 template_name_mock,
-                index_url_mock,
-                use_defaults_mock,
-                config_file_mock,
+                index=index_url_mock,
+                use_defaults=use_defaults_mock,
+                config_file=config_file_mock,
             )
 
         templates_index_class_mock.assert_called_once_with(index_url_mock)
@@ -104,9 +104,9 @@ class MainTestCase(TestCase):
         with self.assertRaises(ClickException):
             create_app(
                 template_name_mock,
-                index_url_mock,
-                use_defaults_mock,
-                config_file_mock,
+                index=index_url_mock,
+                use_defaults=use_defaults_mock,
+                config_file=config_file_mock,
             )
 
         templates_index_class_mock.assert_called_once_with(index_url_mock)
