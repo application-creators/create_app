@@ -79,7 +79,7 @@ create_app create TEMPLATE_NAME --config-file=config.json
 ```
 
 
-### Use a custom templates index
+### Using a custom templates index
 
 You or your organization may need to keep a separate index with your own templates. 
 
@@ -91,6 +91,18 @@ create_app list --index="https://www.somewhere.com/templates-index"
 And create your project from a template in that index:
 ```shell
 create_app create TEMPLATE_NAME --index="https://www.somewhere.com/templates-index"
+```
+
+
+### Using create_app from Python
+
+You can import create_app from Python too, which is great for scripting or creating multiple projects at once:
+
+```python
+from create_app.main import create_app
+
+# Create from a template named "python_simple"
+create_app("python_simple")
 ```
 
 

@@ -52,9 +52,9 @@ class CliTestCase(TestCase):
 
         create_app_mock.assert_called_once_with(
             template_name_mock,
-            index_mock,
-            use_defaults_mock,
-            config_file_mock,
+            index=index_mock,
+            use_defaults=use_defaults_mock,
+            config_file=config_file_mock,
         )
 
     @patch(f"{MODULE}.list_templates")

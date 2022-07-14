@@ -49,7 +49,12 @@ def create(
     use_defaults: bool,
     config_file: str,
 ) -> None:
-    return create_app(template_name, index, use_defaults, config_file)
+    return create_app(
+        template_name,
+        index=index,
+        use_defaults=use_defaults,
+        config_file=config_file,
+    )
 
 
 @main.command()

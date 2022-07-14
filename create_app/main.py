@@ -3,14 +3,15 @@ from typing import Dict, Optional
 import click
 
 from create_app.project import Project
+from create_app.settings import TEMPLATES_FILE_URI
 from create_app.templates import Template, TemplatesIndex
 
 
 def create_app(
     template_name: str,
-    index: str,
-    use_defaults: bool,
-    config_file: Optional[str],
+    index: str = TEMPLATES_FILE_URI,
+    use_defaults: bool = False,
+    config_file: Optional[str] = None,
 ) -> None:
     click.echo("Fetching template...")
     template: Template = _get_template(index, template_name)
