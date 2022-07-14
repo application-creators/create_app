@@ -1,50 +1,48 @@
-from typing import Dict
+from typing import Dict, Optional
 
 import click
-from cookiecutter.main import cookiecutter
 
-from create_app.templates import get_templates
-
-
-def create_app(template_name: str, index: str, use_defaults: bool) -> None:
-    template_repository: str = _get_template_repository(index, template_name)
-
-    click.echo(f"\n\nCheck the template out! {template_repository}")
-
-    if use_defaults:
-        click.echo("\n\nUsing default values from the template. ")
-
-    click.echo("\n\nCreating app...\n")
-    cookiecutter(template_repository, no_input=use_defaults)
-    click.echo("\n\nYour app is ready! ✨ 👏 ✨")
+from create_app.project import Project
+from create_app.templates import Template, TemplatesIndex
 
 
-def _get_template_repository(index: str, template_name: str) -> str:
-    templates: Dict[str, str] = _try_to_get_templates(index)
+def create_app(
+    template_name: str,
+    index: str,
+    use_defaults: bool,
+    config_file: Optional[str],
+) -> None:
+    click.echo("Fetching template...")
+    template: Template = _get_template(index, template_name)
+    click.echo(f"Template '{template.name}' is available at {template.repo}\n")
 
-    if template_name not in templates:
-        raise click.ClickException(
-            f"Could not find a template named '{template_name}' "
-            f"in the templates index ({index})"
-        )
-
-    return templates[template_name]
+    click.echo("Creating project...")
+    _create_project(template, use_defaults, config_file)
+    click.echo("Project created! ✨ 👏 ✨")
 
 
-def _try_to_get_templates(index: str) -> Dict[str, str]:
+def _get_template(index: str, template_name: str) -> Template:
     try:
-        click.echo("Fetching index...")
-        templates: Dict[str, str] = get_templates(index)
-        click.echo("Fetch successful.")
-        return templates
-    except Exception:
-        raise click.ClickException(f"Failed to fetch templates from index! ({index})")
+        return TemplatesIndex(index).get_template(template_name)
+    except Exception as e:
+        raise click.ClickException(str(e))
+
+
+def _create_project(
+    template: Template,
+    use_defaults: bool,
+    config_file: Optional[str],
+) -> None:
+    try:
+        return Project(template, use_defaults, config_file).create()
+    except Exception as e:
+        raise click.ClickException(str(e))
 
 
 def list_templates(index: str) -> None:
-    templates: Dict[str, str] = _try_to_get_templates(index)
+    templates: Dict[str, str] = TemplatesIndex(index).get_templates()
 
     click.echo("\nTemplates in index:")
 
-    for template_name, template_repository in templates.items():
-        click.echo(f"  * {template_name} ({template_repository})")
+    for template_name, template_repo in templates.items():
+        click.echo(f"  * {template_name} ({template_repo})")

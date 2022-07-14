@@ -44,15 +44,17 @@ class CliTestCase(TestCase):
         template_name_mock = MagicMock()
         index_mock = MagicMock()
         use_defaults_mock = MagicMock()
+        config_file_mock = MagicMock()
 
         from create_app.cli import create
 
-        create(template_name_mock, index_mock, use_defaults_mock)
+        create(template_name_mock, index_mock, use_defaults_mock, config_file_mock)
 
         create_app_mock.assert_called_once_with(
             template_name_mock,
             index_mock,
             use_defaults_mock,
+            config_file_mock,
         )
 
     @patch(f"{MODULE}.list_templates")
