@@ -60,6 +60,25 @@ create_app create TEMPLATE_NAME
 ```
 
 
+#### Using the template defaults
+
+If you don't want to configure your project and just want to create it from the template using all the default values,
+use the _--use-defaults_ flag:
+```shell
+create_app create TEMPLATE_NAME --use-defaults
+```
+
+
+#### Using a configuration file
+
+When creating a project, you are asked to type your project configuration in. If you already know which the template
+settings are and the values you want to use, you can use the _--config-file_ option to specify these values from a JSON
+file. This option is specially useful for scripting:
+```shell
+create_app create TEMPLATE_NAME --config-file=config.json
+```
+
+
 ### Use a custom templates index
 
 You or your organization may need to keep a separate index with your own templates. 

@@ -11,11 +11,13 @@ class Argument:
 class Option:
     USE_DEFAULTS = "--use-defaults"
     INDEX = "--index"
+    CONFIG_FILE = "--config-file"
 
 
 HELP = {
     Option.USE_DEFAULTS: "Use default configuration values from the template",
     Option.INDEX: f"Templates index URL. Default: {TEMPLATES_FILE_URI}",
+    Option.CONFIG_FILE: "Template configuration file path",
 }
 
 
@@ -35,9 +37,19 @@ def main():
     default=TEMPLATES_FILE_URI,
     help=HELP[Option.INDEX],
 )
+@click.option(
+    Option.CONFIG_FILE,
+    type=click.Path(),
+    help=HELP[Option.CONFIG_FILE],
+)
 @click.argument(Argument.TEMPLATE_NAME)
-def create(template_name: str, index: str, use_defaults: bool) -> None:
-    return create_app(template_name, index, use_defaults)
+def create(
+    template_name: str,
+    index: str,
+    use_defaults: bool,
+    config_file: str,
+) -> None:
+    return create_app(template_name, index, use_defaults, config_file)
 
 
 @main.command()

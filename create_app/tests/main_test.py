@@ -11,90 +11,127 @@ MODULE = get_module(__file__)
 
 class MainTestCase(TestCase):
     @patch(f"{MODULE}.click", MagicMock())
-    @patch(f"{MODULE}.cookiecutter")
-    @patch(f"{MODULE}.get_templates")
+    @patch(f"{MODULE}.Project")
+    @patch(f"{MODULE}.TemplatesIndex")
     def test_create_app_success(
         self,
-        get_templates_mock: MagicMock,
-        cookiecutter_mock: MagicMock,
+        templates_index_class_mock: MagicMock,
+        project_class_mock: MagicMock,
     ) -> None:
         template_name_mock = MagicMock()
-        template_repo_mock = MagicMock()
-        templates_mock = {
-            template_name_mock: template_repo_mock,
-        }
-
-        get_templates_mock.return_value = templates_mock
-
-        index_mock = MagicMock()
-
+        index_url_mock = MagicMock()
         use_defaults_mock = MagicMock()
+        config_file_mock = MagicMock()
 
-        create_app(template_name_mock, index_mock, use_defaults_mock)
+        templates_index_mock = MagicMock()
+        templates_index_class_mock.return_value = templates_index_mock
+        template_mock = MagicMock()
+        templates_index_mock.get_template.return_value = template_mock
 
-        get_templates_mock.assert_called_once_with(index_mock)
+        project_mock = MagicMock()
+        project_class_mock.return_value = project_mock
 
-        cookiecutter_mock.assert_called_once_with(
-            template_repo_mock,
-            no_input=use_defaults_mock,
+        create_app(
+            template_name_mock,
+            index_url_mock,
+            use_defaults_mock,
+            config_file_mock,
         )
 
-    @patch(f"{MODULE}.click.echo", MagicMock())
-    @patch(f"{MODULE}.cookiecutter")
-    @patch(f"{MODULE}.get_templates")
-    def test_create_app_when_index_fetch_fails(
-        self,
-        get_templates_mock: MagicMock,
-        cookiecutter_mock: MagicMock,
-    ) -> None:
-        get_templates_mock.side_effect = Exception()
+        templates_index_class_mock.assert_called_once_with(index_url_mock)
+        templates_index_mock.get_template.assert_called_once_with(template_name_mock)
 
+        project_class_mock.assert_called_once_with(
+            template_mock,
+            use_defaults_mock,
+            config_file_mock,
+        )
+
+        project_mock.create.assert_called_once()
+
+    @patch(f"{MODULE}.click.echo", MagicMock())
+    @patch(f"{MODULE}.Project")
+    @patch(f"{MODULE}.TemplatesIndex")
+    def test_create_app_when_index_fails(
+        self,
+        templates_index_class_mock: MagicMock,
+        project_class_mock: MagicMock,
+    ) -> None:
         template_name_mock = MagicMock()
-        index_mock = MagicMock()
+        index_url_mock = MagicMock()
         use_defaults_mock = MagicMock()
+        config_file_mock = MagicMock()
+
+        templates_index_mock = MagicMock()
+        templates_index_class_mock.return_value = templates_index_mock
+        templates_index_mock.get_template.side_effect = Exception("Failed")
 
         with self.assertRaises(ClickException):
-            create_app(template_name_mock, index_mock, use_defaults_mock)
+            create_app(
+                template_name_mock,
+                index_url_mock,
+                use_defaults_mock,
+                config_file_mock,
+            )
 
-        get_templates_mock.assert_called_once_with(index_mock)
+        templates_index_class_mock.assert_called_once_with(index_url_mock)
+        templates_index_mock.get_template.assert_called_once_with(template_name_mock)
 
-        cookiecutter_mock.assert_not_called()
+        project_class_mock.assert_not_called()
 
     @patch(f"{MODULE}.click.echo", MagicMock())
-    @patch(f"{MODULE}.cookiecutter")
-    @patch(f"{MODULE}.get_templates")
-    def test_create_app_when_template_does_not_exist_in_index(
+    @patch(f"{MODULE}.Project")
+    @patch(f"{MODULE}.TemplatesIndex")
+    def test_create_app_when_project_creation_fails(
         self,
-        get_templates_mock: MagicMock,
-        cookiecutter_mock: MagicMock,
+        templates_index_class_mock: MagicMock,
+        project_class_mock: MagicMock,
     ) -> None:
-        templates_mock = {}
-        get_templates_mock.return_value = templates_mock
-
         template_name_mock = MagicMock()
-        index_mock = MagicMock()
+        index_url_mock = MagicMock()
         use_defaults_mock = MagicMock()
+        config_file_mock = MagicMock()
+
+        templates_index_mock = MagicMock()
+        templates_index_class_mock.return_value = templates_index_mock
+        template_mock = MagicMock()
+        templates_index_mock.get_template.return_value = template_mock
+
+        project_mock = MagicMock()
+        project_mock.create.side_effect = Exception("Failed")
+        project_class_mock.return_value = project_mock
 
         with self.assertRaises(ClickException):
-            create_app(template_name_mock, index_mock, use_defaults_mock)
+            create_app(
+                template_name_mock,
+                index_url_mock,
+                use_defaults_mock,
+                config_file_mock,
+            )
 
-        get_templates_mock.assert_called_once_with(index_mock)
+        templates_index_class_mock.assert_called_once_with(index_url_mock)
+        templates_index_mock.get_template.assert_called_once_with(template_name_mock)
 
-        cookiecutter_mock.assert_not_called()
+        project_class_mock.assert_called_once_with(
+            template_mock,
+            use_defaults_mock,
+            config_file_mock,
+        )
+
+        project_mock.create.assert_called_once()
 
     @patch(f"{MODULE}.click.echo", MagicMock())
-    @patch(f"{MODULE}.get_templates")
-    def test_list_templates(self, get_templates_mock: MagicMock) -> None:
-        index_mock = MagicMock()
+    @patch(f"{MODULE}.TemplatesIndex")
+    def test_list_templates(self, templates_index_class_mock: MagicMock) -> None:
+        templates_index_mock = MagicMock()
+        templates_index_class_mock.return_value = templates_index_mock
 
-        template_name_mock = MagicMock()
-        template_repo_mock = MagicMock()
-        templates_mock = {
-            template_name_mock: template_repo_mock,
-        }
+        templates_mock = MagicMock()
+        templates_index_mock.get_templates.return_value = templates_mock
 
-        get_templates_mock.return_value = templates_mock
+        index_url_mock = MagicMock()
 
-        list_templates(index_mock)
+        list_templates(index_url_mock)
 
-        get_templates_mock.assert_called_once_with(index_mock)
+        templates_index_class_mock.assert_called_once_with(index_url_mock)
+        templates_mock.items.assert_called_once_with()
