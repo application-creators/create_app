@@ -106,6 +106,24 @@ create_app("python_simple")
 ```
 
 
+## How it works
+
+It uses a great tool named [cookiecutter](https://cookiecutter.readthedocs.io/en/stable/) to build your project from 
+a template. The templates are cookiecutters, so you could simply use cookiecutter to build your project from the 
+template repo URL:
+```shell
+python -m cookiecutter https://github.com/application-creators/python_simple
+```
+
+_create_app_ is just an entry point to a set of templates, and I was inspired by 
+[create-react-app](https://create-react-app.dev/docs/getting-started#selecting-a-template), which lets you create your
+project from a template by just specifying a template name.
+
+The main goal though, and what I would like to focus on, is to come up with great project templates. Then people can 
+choose to directly use cookiecutter to build their projects, or could use this tool to discover which templates are
+available and to create their project.
+
+
 ## Index of Available Templates
 
 There's an [index of templates](/templates.json), from which you can get your project started:
