@@ -23,7 +23,8 @@ _create_app_ is a tool that allows to quickly get your basic project structure r
 from which you can get your project started, plus it's super easy to use and encourages the adoption of the best 
 technologies, tools, and practices. 
 
-At the moment, there are only Python templates available. But _create_app_ can generate projects of **any language**.
+At the moment, there are only Python templates available. But _create_app_ can generate projects of **any language**,
+as it uses [cookiecutter](https://cookiecutter.readthedocs.io/en/stable/).
 
 
 ## Installation
