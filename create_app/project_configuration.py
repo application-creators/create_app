@@ -11,7 +11,6 @@ class TemplateConfigFileNotFound(TemplateConfigFileError):
 
 
 class ProjectConfiguration:
-
     DEFAULT_CONTEXT_KEY = "default_context"
 
     def __init__(self, template_config_file_path: str):
